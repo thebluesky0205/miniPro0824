@@ -90,10 +90,20 @@
       </v-container>
     </div>
       <div id="header" v-else>
-      <h1>TesttestTest</h1>
-        <div align="center">
-          <login-form @submit="onSubmit"/>
-        </div>
+      <div class="loginF">
+        <h1>Mini_Project.ing</h1>
+        <hr>
+        <form>
+          <router-link :to="{ name: 'LoginPage' }"
+            class="nav-link">
+          Login
+          </router-link>
+          <router-link :to="{ name: 'AdminSetupPage' }"
+            class="nav-link">
+          | Create
+          </router-link>
+        </form>
+      </div>
       </div>
       <div>
         <v-footer
@@ -139,8 +149,6 @@ export default {
   computed: {
     ...mapState(['myinfo']),
     ...mapGetters(['isAuthorized'])
-  },
-  components: {
   }
 }
 </script>
