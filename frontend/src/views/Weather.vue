@@ -8,10 +8,10 @@
           active-class="active">
         Home
         </router-link>
-        <router-link :to="{ name: 'MyVlog' }"
+        <router-link :to="{ name: 'Attendance' }"
           class="nav-link"
           active-class="active">
-        MyVlog
+        Attendance
         </router-link>
         <router-link :to="{ name: 'Weather' }"
           class="nav-link"
@@ -29,12 +29,22 @@
       <template v-slot:default>
         <thead>
           <tr>
-            <v-btn @click="start()" text color="black">[ 실시간 ]</v-btn>
+            <v-btn @click="start()" text color="black">[ 서울 주간 날씨 ]</v-btn>
           </tr>
         </thead>
+          <tr v-for="list of lists" :key="list.title">
+            <td><a @click="clickWeather(list.weatherNo)">
+            {{ list.text }}
+            </a></td>
+          </tr>
         <tbody>
           <tr v-for="list of lists" :key="list.title">
-            <td><a @click="clickWeather(list.weatherNo)">{{ list.day }}</a></td>
+            <td><a @click="clickWeather(list.weatherNo)">
+            요일 -- {{ list.dday }} ||
+            강수확률(오전/오후) -- {{ list.mrr }} /
+            {{ list.arr }}% ||
+            온도(최저/최) -- {{ list.temp }}
+            </a></td>
           </tr>
         </tbody>
       </template>
